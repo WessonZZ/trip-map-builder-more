@@ -205,7 +205,7 @@ Filtering rules:
 
 1. Copy `assets/template.html` → `index.html`
 2. Fill `HOTEL` object and `DAYS` array with structured data from Phase 1+2
-3. Each location needs: name, lat/lng, type, time, desc; optional: budget, detail, pay, xhs, reserve, gmap
+3. Each location needs: name, lat/lng, type, time, desc; optional: budget, detail, pay, xhs, gmap, and `booking` when it needs advance action
 4. Each day needs `steps: [{t, k, v}]` — the visual timeline (see `references/map-quality.md`)
 5. Fill `overviewContent()` with trip summary, plan picker, lodging, weather, payment warnings
 6. Multiple plans: keep one `PLANS` object keyed by plan, and let the tab bar cycle between them
@@ -214,6 +214,12 @@ Filtering rules:
 Ship the map only after checking these in a real browser: 底图瓦片全部加载成功、每个点有名称、图例可见、切换方案后不残留上一个方案的标签。
 
 Location types: `food` | `spot` | `drink` | `hotel` | `transport`
+
+Booking values (`booking:` on a location) — 任何需要提前预约、买票或订位的点都要标：
+`reserve`（需预约·免费限流）| `ticket`（需购票）| `call`（需提前电话/约车）| `maybe`（旺季才需要）| `queue`（不收预约·现场排队）
+可选 `bookingText` 覆盖默认文案。同一标记要出现在三处：卡片徽章、地图弹窗、总览的「票务与预约」清单。
+
+**没有票务要求的行程是不完整的。** 用户最怕的是到了门口才发现要预约。凡是有预约、限流、售票、订位属性的点，逐个标出来，并写清「提前几天办、去哪办」。
 
 Payment chip values: `1` = confirmed yes (green), `0.5` = maybe (orange), omit = not shown
 

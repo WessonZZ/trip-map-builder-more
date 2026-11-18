@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>深圳 3 人 3.5 天 · 行程地图</title>
-<meta name="description" content="2026.12.02–12.05 深圳三人行：A/B/C 三套方案、分钟级时间轴、住宿与穿衣建议">
+<meta name="description" content="2026.12.02–12.05 深圳三人行：A/B/C 三套方案、分钟级时间轴、住宿与穿衣建议、票务预约清单">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>
@@ -812,6 +812,11 @@ a:hover { text-decoration: underline; }
 }
 .rt-item:last-child .rt-body { padding-bottom: 8px; }
 .rt-item:last-child .rt-time { padding-top: 5px; }
+.rt-bk {
+  display: inline-block; margin-left: 6px; padding: 0 5px;
+  border-radius: 4px; font-size: 10px; font-weight: 700; color: #fff;
+  vertical-align: 1px; letter-spacing: .02em;
+}
 
 /* ── Timeline ── */
 .timeline { position: relative; padding-left: 24px; }
@@ -945,6 +950,13 @@ a:hover { text-decoration: underline; }
   color: var(--text-primary) !important; white-space: nowrap;
 }
 .map-label::before { display: none !important; }
+
+/* ── 票务徽章 ── */
+.badge.book {
+  color: #fff; font-size: 10px; font-weight: 700;
+  padding: 1px 6px; border-radius: 5px; vertical-align: 2px;
+  letter-spacing: .02em; white-space: nowrap;
+}
 </style>
 </head>
 <body>
@@ -1003,7 +1015,7 @@ const PLAN_A = [
   { id: 2, label: 'D2 南山', date: '12/3 周四 · 古城 + 湾 + 蛇口', title: '南山：古城 + 湾 + 蛇口', color: '#34c759',
     steps: [
       { t:'08:50', k:'metro', v:'1 号线 2 站 → 华强路（约 6 分钟）' },
-      { t:'09:00', k:'eat',   v:'蘩楼早茶，约 70 分钟' },
+      { t:'09:00', k:'eat',   v:'蘩楼早茶，约 70 分钟', b:'queue' },
       { t:'10:15', k:'metro', v:'1 号线 华强路 → 桃园 13 站（约 30 分钟），换 12 号线 1 站' },
       { t:'10:55', k:'walk',  v:'南头古城站 C 口，步行 5 分钟入城' },
       { t:'11:00', k:'spot',  v:'逛古城：南城门 → 东莞会馆 → 新安县衙 → 东西街' },
@@ -1012,12 +1024,12 @@ const PLAN_A = [
       { t:'14:20', k:'spot',  v:'骑车或散步，往人才公园方向' },
       { t:'16:45', k:'spot',  v:'等日落（12 月约 17:38）' },
       { t:'17:45', k:'taxi',  v:'打车 15 分钟，约 ¥25 → 海上世界' },
-      { t:'18:30', k:'eat',   v:'四海之家晚餐（潮粤海鲜）' },
+      { t:'18:30', k:'eat',   v:'四海之家晚餐（潮粤海鲜）', b:'call' },
       { t:'20:30', k:'spot',  v:'音乐喷泉，20:30 场' },
       { t:'21:10', k:'taxi',  v:'打车 30 分钟，约 ¥55 回酒店' }
     ],
     locations: [
-      { name: '蘩楼 · 早茶', lat: 22.5450, lng: 114.0880, type: 'food', time: '09:00',
+      { name: '蘩楼 · 早茶', lat: 22.5450, lng: 114.0880, type: 'food', time: '09:00', booking: 'queue',
         desc: '福田振华路，人均不到 100（用代金券）。品质在线，但要早去。', budget: '人均 ¥90',
         detail: '地址：福田区振华路 118 号华丽装饰大厦 1 楼（华强路站步行 6 分钟）。\n必点：露笋虾饺皇 ¥36、干炒牛河 ¥38、豉汁蒸排骨 ¥36、XO 酱山椒蒸凤爪 ¥36。\n小红书口碑：两人 6 道菜 + 2 个茶位，用代金券人均不到 100；「品质在线、环境精致」。\n注意：吃完出来已经排满人，尽量 9 点前进。',
         xhsKeyword: '蘩楼 早茶 深圳', dianpingKeyword: '蘩楼', gmap: G('蘩楼 振华路 深圳') },
@@ -1038,7 +1050,7 @@ const PLAN_A = [
       { name: '深圳湾公园', lat: 22.5170, lng: 113.9460, type: 'spot', time: '14:20',
         desc: '沿海骑行道 + 草坪，租车骑一段，或者就坐着吹海风。12 月日落约 17:38。',
         detail: '从南头古城打车约 12 分钟。\n日落点建议往「人才公园」方向走，人少一些。' },
-      { name: '四海之家（蛇口）', lat: 22.4925, lng: 113.9225, type: 'food', time: '18:30',
+      { name: '四海之家（蛇口）', lat: 22.4925, lng: 113.9225, type: 'food', time: '18:30', booking: 'call',
         desc: '开了 9 年的潮粤海鲜酒楼，海鲜池现点现捞。三个人点 4–5 个菜刚好。', budget: '人均 ¥250',
         detail: '必点：炸墨鱼片（本店 top1）、清蒸斑鱼、椒盐皮皮虾（无膏 280/斤，有膏 480/斤）、圣子王。\n小红书口碑：多条笔记提到「接地气的酒楼格局、海鲜池超大、现点现捞」，靠新鲜和口味取胜，没有花哨摆盘。\n地址：南山荔园路 5 号，水湾站 D 口步行 470 米。周末包间紧，提前一天电话。',
         xhsKeyword: '四海之家 蛇口 海鲜', dianpingKeyword: '四海之家 蛇口', gmap: G('四海之家 蛇口') },
@@ -1059,7 +1071,7 @@ const PLAN_A = [
       { t:'12:30', k:'spot',  v:'海边步道散步，货轮当背景' },
       { t:'13:00', k:'metro', v:'沿栈道走 1 小时 / 或 8 号线 2 站（8 分钟）→ 大梅沙' },
       { t:'14:00', k:'spot',  v:'大梅沙海滨栈道' },
-      { t:'14:40', k:'spot',  v:'大梅沙海滨公园' },
+      { t:'14:40', k:'spot',  v:'大梅沙海滨公园', b:'maybe' },
       { t:'16:00', k:'spot',  v:'8 号仓奥莱喝咖啡歇脚' },
       { t:'16:45', k:'metro', v:'8 号线回福田，约 65 分钟' },
       { t:'17:55', k:'hotel', v:'到酒店，休整 30 分钟' },
@@ -1084,7 +1096,7 @@ const PLAN_A = [
         xhsKeyword: '盐田 肠粉 得米', gmap: G('盐田海鲜食街') },
       { name: '大梅沙海滨栈道', lat: 22.5900, lng: 114.2800, type: 'spot', time: '14:00',
         desc: '1 公里亲海栈道，沿途有海洋动物科普，走起来不累。' },
-      { name: '大梅沙海滨公园', lat: 22.5948, lng: 114.3060, type: 'spot', time: '14:40',
+      { name: '大梅沙海滨公园', lat: 22.5948, lng: 114.3060, type: 'spot', time: '14:40', booking: 'maybe',
         desc: '深圳最出名的免费大沙滩。12 月不下水，走沙滩、拍照正好。',
         detail: '想避开人群往「天长地久石」方向走。\n免费，旺季需预约，12 月一般不用——出发前在官方公众号确认一次。' },
       { name: '大梅沙 8 号仓奥莱', lat: 22.5995, lng: 114.3120, type: 'spot', time: '16:00',
@@ -1099,14 +1111,14 @@ const PLAN_A = [
       { t:'08:30', k:'hotel', v:'起床，收拾行李' },
       { t:'09:00', k:'hotel', v:'退房，行李寄存前台' },
       { t:'09:15', k:'walk',  v:'步行 20 分钟 / 地铁 2 站 → 市民中心' },
-      { t:'09:30', k:'spot',  v:'深圳博物馆（需提前预约）' },
+      { t:'09:30', k:'spot',  v:'深圳博物馆', b:'reserve' },
       { t:'11:20', k:'metro', v:'4 号线 1 站 → 会展中心，换 1 号线 1 站 → 岗厦' },
       { t:'11:45', k:'eat',   v:'菜忠牛肉粿条，30 元一碗' },
       { t:'12:45', k:'walk',  v:'回酒店取行李' },
       { t:'13:10', k:'metro', v:'机场：11 号线 50 分钟 / 深圳北：4 号线 25 分钟' }
     ],
     locations: [
-      { name: '深圳博物馆', lat: 22.5453, lng: 114.0628, type: 'spot', time: '09:30',
+      { name: '深圳博物馆', lat: 22.5453, lng: 114.0628, type: 'spot', time: '09:30', booking: 'reserve',
         desc: '免费，周一闭馆。周六务必提前在官方渠道预约。室内，天气差也不影响。',
         detail: '市民中心旁边，从酒店步行 20 分钟或地铁 2 站。\n如果航班在 15:00 前，直接砍掉这个点。' },
       { name: '菜忠潮州牛肉店（岗厦）', lat: 22.5380, lng: 114.0680, type: 'food', time: '11:45',
@@ -1128,10 +1140,10 @@ const PLAN_B = [
     steps: [
       { t:'08:00', k:'hotel', v:'起床，早茶吃扎实点' },
       { t:'08:20', k:'metro', v:'1 号线 2 站 → 华强路（约 6 分钟）' },
-      { t:'08:30', k:'eat',   v:'蘩楼早茶，约 50 分钟' },
+      { t:'08:30', k:'eat',   v:'蘩楼早茶，约 50 分钟', b:'queue' },
       { t:'09:30', k:'metro', v:'1 号线 9 站 → 世界之窗（约 21 分钟）' },
       { t:'09:50', k:'walk',  v:'A 口出，步行 8 分钟到欢乐谷' },
-      { t:'10:00', k:'spot',  v:'开园进园，先冲最热的项目' },
+      { t:'10:00', k:'spot',  v:'欢乐谷开园进园，先冲最热的项目', b:'ticket' },
       { t:'12:30', k:'eat',   v:'园内午餐' },
       { t:'13:15', k:'spot',  v:'继续玩 + 看演出' },
       { t:'17:35', k:'taxi',  v:'出园，打车 20 分钟 → 南山' },
@@ -1141,11 +1153,11 @@ const PLAN_B = [
       { t:'21:10', k:'taxi',  v:'打车 30 分钟回酒店' }
     ],
     locations: [
-      { name: '蘩楼 · 早茶', lat: 22.5450, lng: 114.0880, type: 'food', time: '08:30',
+      { name: '蘩楼 · 早茶', lat: 22.5450, lng: 114.0880, type: 'food', time: '08:30', booking: 'queue',
         desc: '开园前先吃饱，园内餐饮又贵又一般。', budget: '人均 ¥90',
         detail: '必点：露笋虾饺皇、干炒牛河、豉汁蒸排骨。吃完直接 1 号线去世界之窗。',
         xhsKeyword: '蘩楼 早茶 深圳', dianpingKeyword: '蘩楼', gmap: G('蘩楼 振华路 深圳') },
-      { name: '欢乐谷', lat: 22.5400, lng: 113.9770, type: 'spot', time: '10:00',
+      { name: '欢乐谷', lat: 22.5400, lng: 113.9770, type: 'spot', time: '10:00', booking: 'ticket',
         desc: '开园就进，先冲最热的项目。周四工作日，人比周末少很多。', budget: '门票约 ¥230/人',
         detail: '开园先玩排队最长的两三个（雪域雄鹰、木质过山车一类），中午以后队伍明显变长。\n提前在官方小程序买票，通常有优惠也省排队。存包、雨衣园内都有卖。',
         xhsKeyword: '深圳 欢乐谷 攻略', dianpingKeyword: '深圳欢乐谷', gmap: G('深圳欢乐谷') },
@@ -1163,7 +1175,7 @@ const PLAN_B = [
     steps: [
       { t:'07:30', k:'hotel', v:'起床、吃早饭' },
       { t:'07:50', k:'walk',  v:'楼下集合，叫车到门口' },
-      { t:'08:00', k:'taxi',  v:'包车出发 → 大鹏所城，约 1 小时 45 分' },
+      { t:'08:00', k:'taxi',  v:'包车出发 → 大鹏所城，约 1 小时 45 分', b:'call', bt:'需提前约车' },
       { t:'09:45', k:'spot',  v:'大鹏所城（600 年古城，免费）' },
       { t:'11:50', k:'taxi',  v:'开车 5 分钟 → 较场尾' },
       { t:'12:00', k:'eat',   v:'较场尾海鲜大排档' },
@@ -1175,7 +1187,7 @@ const PLAN_B = [
       { t:'19:00', k:'eat',   v:'李记湛光蚝庄，烧烤' }
     ],
     locations: [
-      { name: '大鹏所城', lat: 22.5925, lng: 114.4790, type: 'spot', time: '09:45',
+      { name: '大鹏所城', lat: 22.5925, lng: 114.4790, type: 'spot', time: '09:45', booking: 'call', bookingText: '需提前约车',
         desc: '600 年古城，深圳别称「鹏城」的由来。免费。',
         detail: '福田出发包车约 1 小时 45 分。\n包车一天约 ¥600–800（含司机等候），三人平摊更省心；纯打车单程 ¥200–280，回程不好叫车。\n不要坐公交：8 号线到小梅沙再转车，单程 2.5 小时以上。' },
       { name: '较场尾海鲜大排档', lat: 22.5960, lng: 114.4905, type: 'food', time: '12:00',
@@ -1214,7 +1226,7 @@ const PLAN_C = [
     steps: [
       { t:'09:00', k:'hotel', v:'睡到自然醒，不用赶车' },
       { t:'09:30', k:'walk',  v:'步行 20 分钟 / 地铁 2 站 → 市民中心' },
-      { t:'09:40', k:'spot',  v:'深圳博物馆（免费，需提前预约）' },
+      { t:'09:40', k:'spot',  v:'深圳博物馆', b:'reserve' },
       { t:'11:45', k:'eat',   v:'午餐：福田中心城 / 购物公园一带' },
       { t:'13:30', k:'metro', v:'2 号线 2 站 → 华强北' },
       { t:'13:40', k:'spot',  v:'华强北：电子市场、潮玩、配件' },
@@ -1227,7 +1239,7 @@ const PLAN_C = [
       { t:'21:00', k:'taxi',  v:'打车 10 分钟回酒店' }
     ],
     locations: [
-      { name: '深圳博物馆', lat: 22.5453, lng: 114.0628, type: 'spot', time: '09:40',
+      { name: '深圳博物馆', lat: 22.5453, lng: 114.0628, type: 'spot', time: '09:40', booking: 'reserve',
         desc: '免费，周一闭馆，需提前预约。室内，下雨也不影响。',
         detail: '市民中心旁边，从酒店步行 20 分钟或地铁 2 站。\n上午人少，展厅讲深圳从小渔村到特区的过程，看完再去华强北会更有感觉。' },
       { name: '福田中心城（午餐）', lat: 22.5347, lng: 114.0552, type: 'food', time: '11:45',
@@ -1359,6 +1371,19 @@ function overviewContent() {
 
 <div class="section-head">这几天怎么走</div>
 <div class="day-list">${DAYS.slice(1).map(d=>`<div class="card" onclick="go(${d.id})"><div class="name"><span class="dot" style="background:${d.color}"></span>${d.label} · ${d.title}</div><div class="desc">${d.date}</div></div>`).join('')}</div>
+
+<div class="section-head">票务与预约</div>
+${(() => {
+  const rows = DAYS.slice(1).flatMap(d => d.locations.filter(l => l.booking).map(l => ({ d, l })));
+  if (!rows.length) return '<div class="pay-summary"><div>这个方案没有需要提前预约或购票的点。</div></div>';
+  return rows.map(({ d, l }) => {
+    const b = BOOK[l.booking] || {};
+    return `<div class="pay-summary">
+      <h4><span class="badge book" style="background:${b.c}">${l.bookingText || b.label}</span> ${l.name}</h4>
+      <div>${d.label} · ${l.time !== '—' ? l.time : '备选'}　${b.act || ''}</div>
+    </div>`;
+  }).join('');
+})()}
 
 <div class="section-head">出发前必须做的 4 件事</div>
 <div class="pay-summary">
@@ -1511,6 +1536,22 @@ if (HOTEL.lat) {
 let markers = [], polylines = [], tooltips = [];
 const emojis = { food:'🍽️', spot:'📍', hotel:'🏨', transport:'🚃', drink:'🍺' };
 
+/* 票务与预约标识 */
+const BOOK = {
+  reserve: { label: '需预约', c: '#ff9500', act: '免费但要预约，提前 1–3 天在官方渠道约（周一闭馆）' },
+  ticket:  { label: '需购票', c: '#007aff', act: '提前在官方小程序买票，通常更便宜也省排队' },
+  call:    { label: '需提前联系', c: '#af52de', act: '提前一天电话确认档期' },
+  maybe:   { label: '旺季需预约', c: '#8e8e93', act: '12 月一般不用，出发前在官方公众号确认一次' },
+  queue:   { label: '现场排队', c: '#ff3b30', act: '不接受预约，只能现场取号，尽量开门就到' }
+};
+function bookBadge(loc) {
+  if (!loc.booking) return '';
+  const b = BOOK[loc.booking];
+  if (!b) return '';
+  const text = loc.bookingText || b.label;
+  return `<span class="badge book" style="background:${b.c}">${text}</span>`;
+}
+
 function clearMap() {
   tooltips.forEach(t => { try { map.removeLayer(t); } catch(e){} });
   markerTooltips.forEach(t => { try { map.removeLayer(t); } catch(e){} });
@@ -1564,7 +1605,7 @@ function showDay(idx) {
     });
     m.on('add', () => { const t = m.getTooltip(); if (t && !markerTooltips.includes(t)) markerTooltips.push(t); });
     const gmapQ = l.gmap||encodeURIComponent(l.name+' 深圳');
-    m.bindPopup(`<b>${l.name}</b>${l.time!=='—'?'<br><span style="color:#86868b">'+l.time+'</span>':''}<br>${l.desc}${l.budget?'<br><span style="color:#ff9500">'+l.budget+'</span>':''}<br><a href="#" onclick="event.preventDefault();openAS('${l.name.replace(/'/g,"\\'")}',${l.lat},${l.lng},'${gmapQ}')">📍 导航</a>${l.xhs?' · <a href="'+l.xhs+'" target="_blank">📕 小红书</a>':''}`);
+    m.bindPopup(`<b>${l.name}</b>${l.booking?'<br><span style="color:'+(BOOK[l.booking]?.c||'#ff9500')+';font-weight:600">'+((l.bookingText)||BOOK[l.booking]?.label||'')+'</span>':''}${l.time!=='—'?'<br><span style="color:#86868b">'+l.time+'</span>':''}<br>${l.desc}${l.budget?'<br><span style="color:#ff9500">'+l.budget+'</span>':''}<br><a href="#" onclick="event.preventDefault();openAS('${l.name.replace(/'/g,"\\'")}',${l.lat},${l.lng},'${gmapQ}')">📍 导航</a>${l.xhs?' · <a href="'+l.xhs+'" target="_blank">📕 小红书</a>':''}`);
     markers.push(m);
     if(l.time!=='—') coords.push(P(l.lat,l.lng));
   });
@@ -1642,7 +1683,7 @@ function locCard(loc, dayIdx) {
     lnk += `<a href="${dpHref}" onclick="return openDp('${locKey.replace(/'/g,"\\'")}')" class="btn dp">${dpLabel}</a>`;
   }
   if(loc.reserve) lnk += `<a href="${loc.reserve}" target="_blank" class="btn rsv">📅 预约</a>`;
-  return `<div class="tl-item"><div class="tl-dot ${dot}"></div><div class="card" onclick="if(!event.target.closest('.btn,.links'))toggle('${uid}')"><div class="time">${loc.time!=='—'?loc.time:'备选'}</div><div class="name">${bdg} ${loc.name}</div><div class="desc">${loc.desc}</div>${loc.budget?'<div class="budget">'+loc.budget+'</div>':''}${payChips(loc.pay)}<div class="links">${lnk}</div>${loc.detail?'<div class="details" id="'+uid+'">'+loc.detail.replace(/\n/g,'<br>')+'</div>':''}</div></div>`;
+  return `<div class="tl-item"><div class="tl-dot ${dot}"></div><div class="card" onclick="if(!event.target.closest('.btn,.links'))toggle('${uid}')"><div class="time">${loc.time!=='—'?loc.time:'备选'}</div><div class="name">${bdg} ${bookBadge(loc)} ${loc.name}</div><div class="desc">${loc.desc}</div>${loc.budget?'<div class="budget">'+loc.budget+'</div>':''}${payChips(loc.pay)}<div class="links">${lnk}</div>${loc.detail?'<div class="details" id="'+uid+'">'+loc.detail.replace(/\n/g,'<br>')+'</div>':''}</div></div>`;
 }
 
 function renderDay(idx) {
@@ -1656,7 +1697,7 @@ function renderDay(idx) {
       return `<div class="rt-item">
         <div class="rt-time">${s.t}</div>
         <div class="rt-rail"><div class="rt-dot" style="background:${k.c}">${k.e}</div>${i < d.steps.length-1 ? '<div class="rt-line"></div>' : ''}</div>
-        <div class="rt-body">${s.v}</div>
+        <div class="rt-body">${s.v}${s.b && BOOK[s.b] ? `<span class="rt-bk" style="background:${BOOK[s.b].c}">${s.bt||BOOK[s.b].label}</span>` : ''}</div>
       </div>`;
     }).join('') + `</div>`;
   if(main.length) { h += '<div class="section-head">行程</div><div class="timeline">'; main.forEach(l => h += locCard(l, idx)); h += '</div>'; }
