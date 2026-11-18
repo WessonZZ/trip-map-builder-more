@@ -11,6 +11,20 @@
 > **来源**：本仓库是 [hiyeshu/trip-map-builder](https://github.com/hiyeshu/trip-map-builder) 的修改版，基于上游 `195fff6` 分叉。
 > 原始设计、代码与文档版权归原作者所有。上游未附带 LICENSE 文件，本仓库沿用上游的使用条件，未另行授权。
 
+## 效果
+
+<p align="center">
+  <img src="docs/overview.jpg" width="258" alt="总览：方案选择、地图全貌、图例与推荐住宿">
+  <img src="docs/day-timeline.jpg" width="258" alt="单日：分钟级时间轴与常驻名称标签">
+  <img src="docs/plan-switch.jpg" width="258" alt="切换到 B 方案后的 D3 大鹏半岛">
+</p>
+
+截图来自一次真实的深圳三人行（3.5 天，三个方案）。
+
+- **左 · 总览** — 三个方案卡片可切换，地图上是全城点位，左下角图例区分路线颜色和点位类型；下方是当前方案摘要、推荐住宿和穿衣建议。
+- **中 · 单日** — 分钟级时间轴：时间列 + 分类色节点 + 竖向连线。地图上每个点常驻名称标签，密集区域自动避让。
+- **右 · 方案切换** — 换到 B 方案后，图例、路线颜色、标签一起更新，D3 从盐田变成大鹏半岛，路线从地铁改成包车。
+
 ## 改了什么
 
 起因是一次真实的深圳三人行：3.5 天、三人、想吃想逛。按原版流程跑完后发现五个缺口——只出了一个方案、没有具体时间点、没有住宿和穿衣建议、大众点评打不开时没法降级、地图点开只有一堆没有名字的圆点。以下改动针对这五点。
@@ -69,17 +83,17 @@
 一行命令安装（[skills.sh](https://skills.sh) 生态）：
 
 ```bash
-npx skills add hiyeshu/trip-map-builder
+npx skills add WessonZZ/trip-map-builder-more
 ```
 
 或者手动 clone 到 skills 目录：
 
 ```bash
 # Cursor
-git clone https://github.com/hiyeshu/trip-map-builder.git ~/.cursor/skills/trip-map-builder
+git clone https://github.com/WessonZZ/trip-map-builder-more.git ~/.cursor/skills/trip-map-builder
 
 # Claude Code
-git clone https://github.com/hiyeshu/trip-map-builder.git ~/.claude/skills/trip-map-builder
+git clone https://github.com/WessonZZ/trip-map-builder-more.git ~/.claude/skills/trip-map-builder
 ```
 
 ## 触发词
