@@ -3,7 +3,7 @@ Markdown + HTML + OpenCLI references
 
 <directory>
 assets/ - 单文件地图模板 (1文件: template.html)
-references/ - 调研与规划方法论 (3文件: trip-planning.md, dianping-research.md, xhs-research.md)
+references/ - 调研、规划与地图质量标准 (4文件: trip-planning.md, map-quality.md, dianping-research.md, xhs-research.md)
 </directory>
 
 <config>
